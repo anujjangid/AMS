@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "presets": ["module:metro-react-native-babel-preset"],
   "plugins": [
     [
@@ -16,4 +17,7 @@
       }
     ]
   ]
+=======
+  "presets": ["module:metro-react-native-babel-preset"]
+>>>>>>> 255deeaced05a1699ce9c7de6677831419623b3c
 }
