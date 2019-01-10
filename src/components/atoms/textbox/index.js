@@ -1,9 +1,9 @@
 // @flow
-import Typography from 'constants/typography'
+
 import { Colors } from 'constants/colors'
 
 import React, { Component } from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { TextInput } from 'react-native'
 import type { ViewStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet'
 import type { ReturnKeyType } from 'react-native/Libraries/Components/TextInput/TextInput'
 
@@ -20,6 +20,7 @@ type Props = {
   onFocus?: (event: Event) => void,
   onBlur?: (event: Event) => void,
   autoFocus: boolean,
+  autoCorrect: string,
 }
 
 class Textbox extends Component<Props> {
@@ -28,6 +29,7 @@ class Textbox extends Component<Props> {
     numberOfLines: 1,
     placeholderTextColor: Colors.grey.text,
     autoFocus: false,
+    autoCorrect: false,
   }
   render() {
     const {
@@ -43,10 +45,11 @@ class Textbox extends Component<Props> {
       onFocus,
       onBlur,
       autoFocus,
+      autoCorrect,
     } = this.props
     return (
       <TextInput
-        style={[styles.inputStyle, style]}
+        style={style}
         placeholder={placeholder}
         selectionColor={selectionColor}
         placeholderTextColor={placeholderTextColor}
@@ -58,17 +61,10 @@ class Textbox extends Component<Props> {
         numberOfLines={numberOfLines}
         returnKeyType={returnKeyType}
         autoFocus={autoFocus}
+        autoCorrect={autoCorrect}
       />
     )
   }
 }
-
-const styles = StyleSheet.create({
-  inputStyle: {
-    ...Typography.caption,
-    flex: 1,
-    color: Colors.black.default,
-  },
-})
 
 export default Textbox
