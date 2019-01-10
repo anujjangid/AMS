@@ -64,6 +64,7 @@ class Buttons extends Component<Props> {
 const styles = StyleSheet.create({
   mainContainer: {
     position: 'relative',
+    borderRadius: Borders.RADIUS.BUTTON,
   },
   gradientContainer: {
     borderRadius: Borders.RADIUS.BUTTON,

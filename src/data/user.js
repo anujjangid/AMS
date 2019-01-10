@@ -1,4 +1,4 @@
-const user = {
+const USERS = {
   AKQA0003: {
     id: 'AKQA0003',
     name: 'Anurag Bhatnagar',
@@ -425,4 +425,4 @@ const user = {
     team: '-',
   },
 }
-export default user
+export default USERS

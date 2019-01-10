@@ -1,9 +1,11 @@
 // @flow
 
 import { Colors } from 'constants/colors'
+import {Spacings} from 'constants/layout'
+import Typography from 'constants/typography'
 
 import React, { Component } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 import type { ViewStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet'
 import type { ReturnKeyType } from 'react-native/Libraries/Components/TextInput/TextInput'
 
@@ -36,6 +38,7 @@ class Textbox extends Component<Props> {
       placeholder,
       placeholderTextColor,
       style,
+      ref,
       selectionColor,
       returnKeyType,
       onChangeText,
@@ -49,7 +52,8 @@ class Textbox extends Component<Props> {
     } = this.props
     return (
       <TextInput
-        style={style}
+        style={[styles.textField, style]}
+        ref={ref}
         placeholder={placeholder}
         selectionColor={selectionColor}
         placeholderTextColor={placeholderTextColor}
@@ -66,5 +70,14 @@ class Textbox extends Component<Props> {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  textField: {
+     ...Typography.title1,
+    padding: Spacings.S,
+    borderBottomWidth:1,
+    borderColor: Colors.grey.light
+  },
+})
 
 export default Textbox
