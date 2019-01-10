@@ -8,6 +8,8 @@ import Button from 'components/atoms/buttons'
 import Textbox from 'components/atoms/textbox'
 import FlatButton from 'components/atoms/flat-button'
 import Typography from 'constants/typography'
+import {storeItem, retrieveItem} from 'lib/storage'
+
 
 const Allot = (props: Props) => {
   return (
@@ -17,13 +19,13 @@ const Allot = (props: Props) => {
         style={{ backgroundColor: Colors.blue.ribbon }}
         text={'Button'}
         width={100}
-        onPress={() => alert()}
+        onPress={async () => await storeItem('1', 'some new')}
       />
       <Textbox placeholder={'placeholder'} />
       <FlatButton
         textStyle={{ color: Colors.blue.ribbon }}
         text={'flat btn'}
-        onPress={() => alert()}
+        onPress={async () => console.log(await retrieveItem('1'))}
       />
     </View>
   )
