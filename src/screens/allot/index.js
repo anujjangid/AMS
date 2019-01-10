@@ -7,14 +7,24 @@ import user from 'dataSet/user'
 import Button from 'components/atoms/buttons'
 import Textbox from 'components/atoms/textbox'
 import FlatButton from 'components/atoms/flat-button'
+import Typography from 'constants/typography'
 
 const Allot = (props: Props) => {
   return (
     <View style={styles.block}>
       <Text style={styles.empName}>{user.AKQA0065.name}</Text>
-      <Button style={{backgroundColor: Colors.blue.ribbon}} text={'Button'} width={100} onPress={() => alert()}/>
+      <Button
+        style={{ backgroundColor: Colors.blue.ribbon }}
+        text={'Button'}
+        width={100}
+        onPress={() => alert()}
+      />
       <Textbox placeholder={'placeholder'} />
-      <FlatButton textStyle={{color: Colors.blue.ribbon}} text={'flat btn'} onPress={() => alert()} />
+      <FlatButton
+        textStyle={{ color: Colors.blue.ribbon }}
+        text={'flat btn'}
+        onPress={() => alert()}
+      />
     </View>
   )
 }
@@ -25,7 +35,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   empName: {
-    fontSize: 30,
+    ...Typography.largeTitle,
     textAlign: 'center',
   },
 })
