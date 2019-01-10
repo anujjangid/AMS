@@ -10,7 +10,8 @@ import USERS from 'dataSet/user'
 import DEVICES from 'dataSet/device'
 import Button from 'components/atoms/buttons'
 import Textbox from 'components/atoms/textbox'
-import FlatButton from 'components/atoms/flat-button'import { storeItem, retrieveItem } from 'lib/storage'
+import FlatButton from 'components/atoms/flat-button'
+import { storeItem, retrieveItem } from 'lib/storage'
 
 class Allot extends Component<Props, State> {
   constructor(props) {
