@@ -1,17 +1,16 @@
 // @flow
 
-import React, {Component} from 'react'
-import { View, Text, StyleSheet } from 'react-native'
 import { Colors } from 'constants/colors'
 import { Spacings } from 'constants/layout'
+import Typography from 'constants/typography'
+
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import USERS from 'dataSet/user'
 import DEVICES from 'dataSet/device'
 import Button from 'components/atoms/buttons'
 import Textbox from 'components/atoms/textbox'
-import FlatButton from 'components/atoms/flat-button'
-import Typography from 'constants/typography'
-import { storeItem, retrieveItem } from 'lib/storage'
-
+import FlatButton from 'components/atoms/flat-button'import { storeItem, retrieveItem } from 'lib/storage'
 
 class Allot extends Component<Props, State> {
   constructor(props) {
@@ -23,7 +22,7 @@ class Allot extends Component<Props, State> {
     this.state = {
       empId: undefined,
       deviceId: undefined,
-      errMessage: undefined
+      errMessage: undefined,
     }
   }
 
@@ -31,29 +30,29 @@ class Allot extends Component<Props, State> {
     this.setState({
       empId: undefined,
       deviceId: undefined,
-      errMessage: undefined
+      errMessage: undefined,
     })
   }
 
-  empIdTextHandler = (event) => {
+  empIdTextHandler = event => {
     this.setState({
-      empId: event.nativeEvent.text.toUpperCase()
+      empId: event.nativeEvent.text.toUpperCase(),
     })
   }
 
-  deviceIdTextHandler = (event) => {
+  deviceIdTextHandler = event => {
     this.setState({
-      deviceId: event.nativeEvent.text.toUpperCase()
+      deviceId: event.nativeEvent.text.toUpperCase(),
     })
   }
 
-  generateDeviceInfo = (id) => {
+  generateDeviceInfo = id => {
     if (DEVICES[id]) {
       return DEVICES[id].name
     }
   }
 
-  generateUserInfo = (id) => {
+  generateUserInfo = id => {
     if (USERS[id]) {
       return USERS[id].name
     }
@@ -64,16 +63,34 @@ class Allot extends Component<Props, State> {
     console.log(empId, deviceId)
     return (
       <View style={styles.root}>
+        <Textbox
+          ref={input => {
+            this.empInput = input
+          }}
+          style={styles.textField}
+          placeholder={'Enter Device ID'}
+          onBlur={this.empIdTextHandler}
+          onSubmitEditing={this.empIdTextHandler}
+        />
 
-        <Textbox ref={input => { this.empInput = input }} style={styles.textField} placeholder={'Enter Device ID'} onBlur={this.empIdTextHandler} onSubmitEditing={this.empIdTextHandler} />
+        <Textbox
+          ref={input => {
+            this.deviceInput = input
+          }}
+          style={styles.textField}
+          placeholder={'Enter Emp ID'}
+          onBlur={this.deviceIdTextHandler}
+          onSubmitEditing={this.deviceIdTextHandler}
+        />
 
-        <Textbox ref={input => { this.deviceInput = input }} style={styles.textField} placeholder={'Enter Emp ID'} onBlur={this.deviceIdTextHandler} onSubmitEditing={this.deviceIdTextHandler} />
-
-        {empId && deviceId && 
+        {empId && deviceId && (
           <View style={styles.infoWrapper}>
-            <Text style={styles.info}>Should you, {this.generateUserInfo(empId)}, choose to take the ownership of the device - {this.generateDeviceInfo(deviceId)}?</Text>
+            <Text style={styles.info}>
+              Should you, {this.generateUserInfo(empId)}, choose to take the
+              ownership of the device - {this.generateDeviceInfo(deviceId)}?
+            </Text>
           </View>
-        }
+        )}
 
         <View style={styles.errWrapper}>
           <Text>{errMessage}</Text>
@@ -84,7 +101,7 @@ class Allot extends Component<Props, State> {
         </View>
 
         <View style={styles.buttonWrapper}>
-        <Button
+          <Button
             style={[styles.buttons, styles.secondaryBtn]}
             text={'Reject'}
             width={100}
@@ -94,7 +111,13 @@ class Allot extends Component<Props, State> {
             style={[styles.buttons, styles.primaryBtn]}
             text={'Accept'}
             width={100}
-            onPress={async () => await storeItem(deviceId, {empId: empId, name:this.generateUserInfo(empId), timestamp: new Date() })}
+            onPress={async () =>
+              await storeItem(deviceId, {
+                empId: empId,
+                name: this.generateUserInfo(empId),
+                timestamp: new Date(),
+              })
+            }
           />
           <FlatButton
             textStyle={{ color: Colors.blue.ribbon }}
@@ -114,23 +137,17 @@ const styles = StyleSheet.create({
     margin: Spacings.S,
   },
   textField: {
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
-  infoWrapper: {
-
-  },
-  errWrapper: {
-
-  },
-  successWrapper: {
-
-  },
+  infoWrapper: {},
+  errWrapper: {},
+  successWrapper: {},
   info: {
     ...Typography.title2,
     marginVertical: Spacings.XL,
   },
   buttonWrapper: {
-    flex:1,
+    flex: 1,
     position: 'absolute',
     bottom: 50,
     left: 0,
@@ -142,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.blue.ribbon,
   },
   secondaryBtn: {
-     backgroundColor: Colors.grey.dark,
-  }
+    backgroundColor: Colors.grey.dark,
+  },
 })
 export default Allot

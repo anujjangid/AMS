@@ -1,11 +1,12 @@
 // @flow
 
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import Pulse from 'react-native-pulse'
 import { Colors } from 'constants/colors'
 import Prompt from 'constants/prompt'
 import Typography from 'constants/typography'
+
+import React, { Component } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import Pulse from 'react-native-pulse'
 
 class Locate extends Component {
   constructor(props) {
