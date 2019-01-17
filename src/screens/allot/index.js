@@ -12,6 +12,9 @@ import Button from 'components/atoms/buttons'
 import Textbox from 'components/atoms/textbox'
 import FlatButton from 'components/atoms/flat-button'
 import { storeItem, retrieveItem } from 'lib/storage'
+import Utils from 'lib/device'
+
+const deviceWidth = Utils.width
 
 class Allot extends Component<Props, State> {
   constructor(props) {
@@ -69,7 +72,7 @@ class Allot extends Component<Props, State> {
             this.empInput = input
           }}
           style={styles.textField}
-          placeholder={'Enter Device ID'}
+          placeholder={'Enter Employee ID'}
           onBlur={this.empIdTextHandler}
           onSubmitEditing={this.empIdTextHandler}
         />
@@ -79,7 +82,7 @@ class Allot extends Component<Props, State> {
             this.deviceInput = input
           }}
           style={styles.textField}
-          placeholder={'Enter Emp ID'}
+          placeholder={'Enter Device ID'}
           onBlur={this.deviceIdTextHandler}
           onSubmitEditing={this.deviceIdTextHandler}
         />
@@ -105,13 +108,13 @@ class Allot extends Component<Props, State> {
           <Button
             style={[styles.buttons, styles.secondaryBtn]}
             text={'Reject'}
-            width={100}
+            width={deviceWidth * 0.9}
             onPress={() => this.resetState()}
           />
           <Button
             style={[styles.buttons, styles.primaryBtn]}
             text={'Accept'}
-            width={100}
+            width={deviceWidth * 0.9}
             onPress={async () =>
               await storeItem(deviceId, {
                 empId: empId,
@@ -147,14 +150,13 @@ const styles = StyleSheet.create({
     ...Typography.title2,
     marginVertical: Spacings.XL,
   },
+  buttons: {
+    marginVertical: 10,
+  },
   buttonWrapper: {
-    flex: 1,
-    position: 'absolute',
-    bottom: 50,
-    left: 0,
-    right: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: 20,
   },
   primaryBtn: {
     backgroundColor: Colors.blue.ribbon,

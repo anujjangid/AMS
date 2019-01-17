@@ -17,6 +17,7 @@ export const Borders = {
     LIST: 15,
   },
   WIDTH: {
+    THINNEST: 1,
     THINNER: 2,
     THIN: 3,
     NORMAL: 4,
