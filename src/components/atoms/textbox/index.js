@@ -1,7 +1,7 @@
 // @flow
 
 import { Colors } from 'constants/colors'
-import { Spacings } from 'constants/layout'
+import { Spacings, Borders } from 'constants/layout'
 import Typography from 'constants/typography'
 
 import React, { Component } from 'react'
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   textField: {
     ...Typography.title1,
     padding: Spacings.S,
-    borderBottomWidth: 1,
+    borderBottomWidth: Borders.WIDTH.THINNEST,
     borderColor: Colors.grey.light,
   },
 })

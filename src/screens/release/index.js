@@ -10,8 +10,9 @@ import USERS from 'dataSet/user'
 import Button from 'components/atoms/buttons'
 import Textbox from 'components/atoms/textbox'
 import Utils from 'lib/device'
+import generateUserInfo from 'lib/common'
 
-const deviceWidth = Utils.width
+const DEVICE_WIDTH = Utils.width
 
 class Release extends Component<Props, State> {
   constructor(props) {
@@ -30,7 +31,7 @@ class Release extends Component<Props, State> {
     const { empId } = this.state
     if (empId) {
       this.setState({ error: false })
-      const userName = this.generateUserInfo(empId)
+      const userName = generateUserInfo(empId)
       if (userName) {
         this.setState({ userName }, () => {
           this.setState({ message: `Showing results for ${userName}` })
@@ -41,8 +42,6 @@ class Release extends Component<Props, State> {
           this.setState({ message: undefined })
           this.setState({ userName: undefined })
         })
-
-        // this.setState({ message: 'User not found' })
       }
     } else {
       this.setState({ error: true })
@@ -53,12 +52,6 @@ class Release extends Component<Props, State> {
       this.setState({ error: false })
     } else {
       this.setState({ userName: undefined })
-    }
-  }
-
-  generateUserInfo = id => {
-    if (USERS[id]) {
-      return USERS[id].name
     }
   }
 
@@ -90,7 +83,7 @@ class Release extends Component<Props, State> {
             <Button
               style={[styles.buttons, styles.primaryBtn]}
               text={`Search ${empId}`}
-              width={deviceWidth * 0.9}
+              width={DEVICE_WIDTH * 0.9}
               onPress={this.handelButton}
             />
           </View>
@@ -117,7 +110,7 @@ const styles = StyleSheet.create({
   },
   textField: {
     textTransform: 'uppercase',
-    width: deviceWidth * 0.9,
+    width: DEVICE_WIDTH * 0.9,
   },
   infoWrapper: {},
   errWrapper: {},
