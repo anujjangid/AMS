@@ -1,7 +1,7 @@
 // @flow
 
 import { Colors } from 'constants/colors'
-import {Spacings} from 'constants/layout'
+import { Spacings } from 'constants/layout'
 import Typography from 'constants/typography'
 
 import React, { Component } from 'react'
@@ -23,6 +23,7 @@ type Props = {
   onBlur?: (event: Event) => void,
   autoFocus: boolean,
   autoCorrect: string,
+  autoCapitalize: string,
 }
 
 class Textbox extends Component<Props> {
@@ -32,6 +33,7 @@ class Textbox extends Component<Props> {
     placeholderTextColor: Colors.grey.text,
     autoFocus: false,
     autoCorrect: false,
+    autoCapitalize: 'none',
   }
   render() {
     const {
@@ -49,6 +51,7 @@ class Textbox extends Component<Props> {
       onBlur,
       autoFocus,
       autoCorrect,
+      autoCapitalize,
     } = this.props
     return (
       <TextInput
@@ -66,6 +69,7 @@ class Textbox extends Component<Props> {
         returnKeyType={returnKeyType}
         autoFocus={autoFocus}
         autoCorrect={autoCorrect}
+        autoCapitalize={autoCapitalize}
       />
     )
   }
@@ -73,10 +77,10 @@ class Textbox extends Component<Props> {
 
 const styles = StyleSheet.create({
   textField: {
-     ...Typography.title1,
+    ...Typography.title1,
     padding: Spacings.S,
-    borderBottomWidth:1,
-    borderColor: Colors.grey.light
+    borderBottomWidth: 1,
+    borderColor: Colors.grey.light,
   },
 })
 
